@@ -8,14 +8,23 @@ import {
   ChevronDown,
   Sparkles,
   ArrowDownCircle,
+  Truck,
+  Palette,
+  Clock,
+  Sparkle,
+  Ticket,
+  Cake,
+  UtensilsCrossed,
+  Cookie,
+  Coffee,
 } from "lucide-react";
 
 export default function Home() {
   const categories = [
-    { name: "CLASSIC", img: "/images/cat_classic.png" },
-    { name: "DOURMET", img: "/images/cat_gourmet.png" },
-    { name: "DESSERTS", img: "/images/cat_desserts.png" },
-    { name: "COOKIES", img: "/images/cat_cookies.png" },
+    { name: "CLASSIC", icon: <Cake className="w-6 h-6 text-[#882522]" /> },
+    { name: "GOURMET", icon: <UtensilsCrossed className="w-6 h-6 text-[#882522]" /> },
+    { name: "DESSERTS", icon: <Coffee className="w-6 h-6 text-[#882522]" /> },
+    { name: "COOKIES", icon: <Cookie className="w-6 h-6 text-[#882522]" /> },
   ];
 
   const bestsellers = [
@@ -61,22 +70,22 @@ export default function Home() {
     {
       title: "ON TIME",
       subtitle: "DELIVERY",
-      img: "/images/icon_delivery.png",
+      icon: <Truck className="w-5 h-5 text-[#882522]" />,
     },
     {
       title: "5100+",
       subtitle: "DESIGNS",
-      img: "/images/icon_designs.png",
+      icon: <Palette className="w-5 h-5 text-[#882522]" />,
     },
     {
       title: "2 CR+",
       subtitle: "ORDERS",
-      img: "/images/icon_orders.png",
+      icon: <Clock className="w-5 h-5 text-[#882522]" />,
     },
     {
       title: "BAKED",
       subtitle: "FRESH",
-      img: "/images/icon_fresh.png",
+      icon: <Sparkle className="w-5 h-5 text-[#882522]" />,
     },
   ];
 
@@ -224,34 +233,22 @@ export default function Home() {
               <p className="text-sm text-[#8c6762] font-medium mt-1">
                 What will you wish for?
               </p>
-              <div className="flex items-center gap-2 mt-3">
-                <div className="w-7 h-7 rounded-full bg-[#faeae7] border border-[#f3d3cc] flex items-center justify-center p-1">
-                  <Image src="/images/badge_1.png" alt="Icon 1" width={16} height={16} className="object-contain" />
-                </div>
-                <div className="w-7 h-7 rounded-full bg-[#faeae7] border border-[#f3d3cc] flex items-center justify-center p-1">
-                  <Image src="/images/badge_2.png" alt="Icon 2" width={16} height={16} className="object-contain" />
-                </div>
-                <div className="w-7 h-7 rounded-full bg-[#faeae7] border border-[#f3d3cc] flex items-center justify-center p-1">
-                  <Image src="/images/badge_3.png" alt="Icon 3" width={16} height={16} className="object-contain" />
-                </div>
+              <div className="flex items-center gap-2 mt-3 text-sm text-[#882522]">
+                <span className="w-7 h-7 rounded-full bg-[#faeae7] border border-[#f3d3cc] flex items-center justify-center">🎂</span>
+                <span className="w-7 h-7 rounded-full bg-[#faeae7] border border-[#f3d3cc] flex items-center justify-center">🧁</span>
+                <span className="w-7 h-7 rounded-full bg-[#faeae7] border border-[#f3d3cc] flex items-center justify-center">🍰</span>
               </div>
             </div>
 
-            {/* Category Cards */}
+            {/* Category Cards with clean vector icons */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
               {categories.map((cat, idx) => (
                 <div
                   key={idx}
                   className="bg-[#fffcfb] border border-[#f3dcd7] rounded-2xl w-24 h-24 sm:w-28 sm:h-28 flex flex-col items-center justify-center p-2 shadow-xs hover:shadow-md hover:border-[#80211d] cursor-pointer transition group"
                 >
-                  <div className="w-10 h-10 relative flex items-center justify-center group-hover:scale-110 transition">
-                    <Image
-                      src={cat.img}
-                      alt={cat.name}
-                      width={40}
-                      height={40}
-                      className="object-contain"
-                    />
+                  <div className="w-10 h-10 rounded-full bg-[#faeae7] flex items-center justify-center group-hover:scale-110 transition">
+                    {cat.icon}
                   </div>
                   <span className="text-[10px] sm:text-xs font-bold text-[#882522] tracking-wider mt-2 uppercase">
                     {cat.name}
@@ -285,23 +282,23 @@ export default function Home() {
                 </button>
 
                 {/* Product Image */}
-                <div className="w-28 h-28 my-3 rounded-xl overflow-hidden flex items-center justify-center">
+                <div className="w-32 h-32 my-2 rounded-2xl overflow-hidden flex items-center justify-center shadow-xs">
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={112}
-                    height={112}
-                    className="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                   />
                 </div>
 
                 {/* Product Title */}
-                <h4 className="text-xs sm:text-sm font-bold text-[#5c2421] leading-snug line-clamp-2 h-10 flex items-center">
+                <h4 className="text-xs sm:text-sm font-bold text-[#5c2421] leading-snug line-clamp-2 h-10 flex items-center mt-1">
                   {item.title}
                 </h4>
 
                 {/* Prices */}
-                <div className="mt-2 flex items-baseline gap-1.5">
+                <div className="mt-1 flex items-baseline gap-1.5">
                   <span className="text-sm sm:text-base font-black text-[#882522]">{item.price}</span>
                   <span className="text-xs text-neutral-400 line-through font-medium">
                     {item.originalPrice}
@@ -329,7 +326,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SECTION: OUR PROMISE (IMPROVED PHOTO BY PHOTO) */}
+        {/* SECTION: OUR PROMISE */}
         <section className="bg-white rounded-3xl p-6 sm:p-8 border border-[#fae2db] shadow-xs">
           <div className="mb-6">
             <h3 className="text-2xl sm:text-3xl font-black text-[#6a2623] tracking-tight">
@@ -345,7 +342,7 @@ export default function Home() {
             {/* Left Column (5 Cols): Features & Ticket */}
             <div className="lg:col-span-5 flex flex-col gap-5">
               
-              {/* 4 Feature Badges with extracted icons */}
+              {/* 4 Feature Badges with clean vector icons */}
               <div className="bg-[#faebe8] border border-[#f3d3cc] rounded-2xl p-4 sm:p-5">
                 <p className="text-xs font-bold text-[#882522] text-center mb-4 tracking-wide">
                   A glimpse into our secret spell – only honest world!
@@ -354,13 +351,7 @@ export default function Home() {
                   {promiseFeatures.map((feat, idx) => (
                     <div key={idx} className="flex flex-col items-center">
                       <div className="w-12 h-12 rounded-full bg-white border border-[#f1d0ca] flex items-center justify-center shadow-xs mb-1.5 p-2">
-                        <Image
-                          src={feat.img}
-                          alt={feat.title}
-                          width={32}
-                          height={32}
-                          className="object-contain"
-                        />
+                        {feat.icon}
                       </div>
                       <span className="text-[10px] sm:text-xs font-black text-[#6a2623] leading-none">
                         {feat.title}
@@ -375,14 +366,8 @@ export default function Home() {
 
               {/* The Magical Ticket Promo Card */}
               <div className="bg-[#fdede9] border border-[#f3d3cc] rounded-2xl p-4 sm:p-5 flex items-center gap-4 relative overflow-hidden">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden shadow-xs flex items-center justify-center">
-                  <Image
-                    src="/images/ticket_graphic.png"
-                    alt="The Magical Ticket"
-                    width={80}
-                    height={80}
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-amber-100/60 border border-amber-300/40 flex items-center justify-center shadow-xs text-[#80211d]">
+                  <Ticket className="w-9 h-9 text-[#882522]" />
                 </div>
                 <div className="flex-1">
                   <h4 className="text-xs sm:text-sm font-black text-[#6a2623] uppercase tracking-wider">
@@ -422,12 +407,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column (7 Cols): 6 Photo Gallery Grid (EXACT CROP & SHAPE) */}
+            {/* Right Column (7 Cols): 6 Photo Gallery Grid (Real High Quality Photos) */}
             <div className="lg:col-span-7 grid grid-cols-2 gap-3 sm:gap-4">
               {galleryImages.map((img, idx) => (
                 <div
                   key={idx}
-                  className="rounded-2xl overflow-hidden border border-[#f3dcd7] shadow-sm bg-[#faf3ef] group cursor-pointer aspect-[109/80] relative"
+                  className="rounded-2xl overflow-hidden border border-[#f3dcd7] shadow-sm bg-[#faf3ef] group cursor-pointer aspect-[4/3] relative"
                 >
                   <Image
                     src={img.src}
